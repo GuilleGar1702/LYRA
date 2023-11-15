@@ -460,3 +460,27 @@ namespace PlayerUI
         }
     }
 }
+
+
+
+/*
+///////////////////////////////////
+
+0dddddKMMMMMMMMMMNkddddkXMMMMMMMMMMW0ddd0WMMMMMMMMMMXxddddddxkO0NWMMMMMMMMMMNOdddddddddddddxXMMMMMMMMMMMMKdddddddddxOKWMMMMMW0dddkXMMMMMMMMMMXkdddOWMMMMMMMMMMMMMWKkoc;;;:coxKWMMMMMMMMMMWKxo:;;;:cokXMM
+c     :XMMMMMMMMWd.    .OMMMMMMMMMMO'   ,0MMMMMMMMMMk.        ..';lkXMMMMMMMK;             .kMMMMMMMMMMMWo          ..;o0WMMWO,  .:KMMMMMMMMXc.  'OWMMMMMMMMMMW0o;..         lNMMMMMMMNOl,.         .dMM
+:      lNMMMMMMMO.     .OMMMMMMMMMK,     :XMMMMMMMMMx.   ,:::;,.    'oKMMMMMK,   .:::::::::lKMMMMMMMMMMMWl   .;::::;.   .dNMMMK;   ,0MMMMMM0;   ;0MMMMMMMMMMW0:.   .,clooolc;dNMMMMMNk;    .;cloolc:;kWM
+:      .xWMMMMMK;      .OMMMMMMMMNc   .   lNMMMMMMMMx.  .OMMMMWXOl.   'OWMMMK,   oMMMMMMMMMMMMMMMMMMMMMMWl   ;XMMMMWXl   .kMMMMXl.  .kWMMWk'   cXMMMMMMMMMMNx.   ,xKWMMMMMMMWWMMMMMXl.  .:kXWMMMMMMMWWMM
+:   ,'  ,0MMMMNl  .;.  .OMMMMMMMWo.  ;x,  .xWMMMMMMMx.  .OMMMMMMMMK:   '0MMMK,   oMMMMMMMMMMMMMMMMMMMMMMWl   ;XMMMMMWd.  .kMMMMMNd.  .dNNd.  .dNMMMMMMMMMMWx.  .oNMMMMMMMMMMMMMMMMNl   .xWMMMMMMMMMMMMMM
+:   cx.  cNMMWx.  cx.  .OMMMMMMWx.  .kWx.  .OMMMMMMMx.  .OMMMMMMMMM0'   lWMMK,   ,dddddddd0WMMMMMMMMMMMMWl   .lddddo:.  .dNMMMMMMWO'   ::.  'kWMMMMMMMMMMMK;   cNMMMMMWMWMWWWWMMMMO.   dWMMMMMWWWWMMWMMM
+:   cXl  .dWM0,  '0k.  .OMMMMMM0'   oWMNl   ,KMMMMMMx.  .OMMMMMMMMMN:   :NMMK,            :NMMMMMMMMMMMMWl             .cKWMMMMMMMMK;      ;0MMMMMMMMMMMMMO.   dMMMMXl,;,,,;,;kWMMd   .OMMMM0c,;,;;;,:OM
+:   cNK;  .ONc  .xMk.  .OMMMMMX;   .okkko.   cXMMMMMx.  .OMMMMMMMMMK,   cWMMK,   ,ooooooooOWMMMMMMMMMMMMWl   .coooolc,   .dNMMMMMMMMXc    cXMMMMMMMMMMMMMMO.   dMMMMK;....    lWMMd   .kMMMMO'...    .dM
+:   cNMO.  :o.  lNMk.  .OMMMMNl               oWMMMMx.  .OMMMMMMMMWd.  .kMMMK,   oMMMMMMMMMMMMMMMMMMMMMMWl   ;XMMMMMMNo   .kMMMMMMMMMO.  .kMMMMMMMMMMMMMMMX;   ;XMMMWK000k,   lWMMO.   lNMMMNK000d.  .dM
+:   cNMWd.  .  ;KMMk.  .OMMMWd.  .:ccccccc;.  .xWMMMx.  .OMMMMMMW0c.  .oNMMMK,   oMMMMMMMMMMMMMMMMMMMMMMWl   ;XMMMMMMNo   .kMMMMMMMMMO.  .kMMMMMMMMMMMMMMMWk.   ;0WMMMMMMX;   lWMMWo.  .cKWMMMMMM0'  .dM
+:   cNMMX:    .OMMMk.  .OMMMk.  .oWMMMMMMMNl   '0MMMx.  .lkxxdoc,.   ,kNMMMMK,   ;xxxxxxxkxx0WMMMMMMMMMMWl   .dkxxxdl,   .oNMMMMMMMMMO.  .kMMMMMMMMMMMMMMMMWk'   .;okO000x'   lWMMMNd.   .:dk0000o.  .dM
+:   cNMMM0'  .dWMMMk.  .OMM0,   cXMMMMMMMMMX:   ;KMMx.           .'ckNMMMMMMK,              ;XMMMMMMMMMMWl             .cOWMMMMMMMMMMO.  .kMMMMMMMMMMMMMMMMMMXd;.     ..      lWMMMMWKo,.     ..     .xM
+klclOWMMMM0lcxNMMMMKocldXMM0llcoKMMMMMMMMMMMKolloKMMKocllllllodxOKNMMMMMMMMMNxclcllllclllllcxNMMMMMMMMMMMOllcclclllodxOXMMMMMMMMMMMMMXdlloKMMMMMMMMMMMMMMMMMMMMWKkoc:;;,;;:coxKMMMMMMMMN0xoc:;,,;::lokXM
+
+
+///////////////////////////////////
+*/
+
