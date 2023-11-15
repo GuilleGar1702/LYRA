@@ -14,7 +14,7 @@ namespace PlayerUI
     public partial class Form2 : Form
     {
         private Form1 Principal;
-        public String ElementSelected;
+        public string ElementSelected;
         string[] SupportedFormats = { ".asf", "mkv", ".wma", ".wmv", ".wm", ".asx", ".wax", ".wvx", ".wmx", ".wpl", ".dvr-ms", ".wmd", ".avi", ".mpg", ".mpeg", ".m1v", ".mp2", ".mp3", ".mpa", ".mpe", ".m3u", ".mid", ".midi", ".rmi", ".aif", ".aifc", ".aiff", ".au", ".snd", ".wav", ".cda", ".ivf", ".wmz", ".wms", ".mov", ".m4a", ".mp4", ".m4v", ".mp4v", ".3g2", ".3gp2", ".3gp", ".3gpp", ".aac", ".adt", ".adts", ".m2ts" };
         public Form2(Form1 Principal)
         {
@@ -34,7 +34,7 @@ namespace PlayerUI
 
         public void Files()
         {
-            String[] FilesArray = Directory.GetFiles(TBRuta.Text);
+            string[] FilesArray = Directory.GetFiles(TBRuta.Text);
             foreach (var File in FilesArray)
             {
                 if (SupportedFormats.Any(x => File.EndsWith(x, StringComparison.OrdinalIgnoreCase)))
@@ -47,6 +47,7 @@ namespace PlayerUI
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            DGVFolder.Rows.Clear();
             fileSystemWatcher1.Path = TBRuta.Text;
             Files();
         }
@@ -57,7 +58,7 @@ namespace PlayerUI
             int n = e.RowIndex;
             if (n != -1)
             {
-                ElementSelected = (String)DGVFolder.Rows[n].Cells[0].Value;
+                ElementSelected = (string)DGVFolder.Rows[n].Cells[0].Value;
             }
             
         }
@@ -75,6 +76,7 @@ namespace PlayerUI
         {
             if (e.KeyCode == Keys.Enter)
             {
+                DGVFolder.Rows.Clear();
                 fileSystemWatcher1.Path = TBRuta.Text;
                 Files();
             }

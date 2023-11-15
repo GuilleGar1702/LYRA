@@ -13,9 +13,9 @@ namespace PlayerUI
     public partial class Form3 : Form
     {
         private Form1 Principal;
-        String[] RecentMediaArray = new String [0];
-        String[] URLsArray = new String [0];
-        String ElementSelected;
+        string[] RecentMediaArray = new string [0];
+        string[] URLsArray = new string [0];
+        string ElementSelected;
         public Form3(Form1 Principal)
         {
             InitializeComponent();
@@ -28,10 +28,10 @@ namespace PlayerUI
             this.Close();
         }
         
-        public void AddMedia(String NewRecentMedia, String NewURL)
+        public void AddMedia(string NewRecentMedia, string NewURL)
         {
             //Set new element in the array
-            String[] TempElementsArray = new String[RecentMediaArray.Length+1];
+            string[] TempElementsArray = new string[RecentMediaArray.Length+1];
             Array.Copy(RecentMediaArray, TempElementsArray, RecentMediaArray.Length);
             TempElementsArray[RecentMediaArray.Length] = NewRecentMedia;
             RecentMediaArray = TempElementsArray;
@@ -39,7 +39,7 @@ namespace PlayerUI
 
 
             //Set new URL in the array
-            String[] TempURLsArray = new String[URLsArray.Length + 1];
+            string[] TempURLsArray = new string[URLsArray.Length + 1];
             Array.Copy(URLsArray, TempURLsArray, URLsArray.Length);
             TempURLsArray[URLsArray.Length] = NewURL;
             URLsArray = TempURLsArray;
@@ -69,15 +69,24 @@ namespace PlayerUI
             int n = e.RowIndex;
             if (n != -1)
             {
-                ElementSelected = URLsArray[n];
+                //ElementSelected = (string)DGVRecentMedia.Rows[n].Cells[0].Value;
+                ElementSelected = Principal.RecentURLs[(Principal.RecentURLs.Length-1)-n];
             }
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
+            //Principal.SetRecentMedia(ElementSelected);
+            Principal.Reset();
             Principal.ExternalURL = ElementSelected;
             Principal.ExternalInput = true;
             this.Close();
+        }
+
+        private void BtnClean_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Principal.CleanRecentMedia();
         }
     }
 }

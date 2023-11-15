@@ -14,7 +14,7 @@ namespace PlayerUI
     
     public partial class Form1 : Form
     {
-        private Form3 RecentMediaForm;
+        
         public string[] RecentURLs = new string[0]; 
         public bool ExternalInput = false;
         public bool play = false;
@@ -22,7 +22,7 @@ namespace PlayerUI
         int position = 0;
         int TempVol = 0;
         public string ExternalURL { get; set; }
-        String Ruta;
+        string Ruta;
         public Form1()
         {
             InitializeComponent();
@@ -53,21 +53,32 @@ namespace PlayerUI
         }
 
 
-        public void SetExternalURL(String URL)
+        public void SetExternalURL(string URL)
         {
             ExternalURL = URL;
             MessageBox.Show(ExternalURL);
             ExternalPlay();
         }
 
+
+        public void Reset()
+        {
+            Pausar();
+            PBMedia.Value = 0;
+            LblDuration.Text = "00:00:00";
+            LblPosition.Text = "00:00:00";
+        }
+
+
+
         public void ExternalPlay()
         {
             //MessageBox.Show(ExternalURL);
+            Reset();
             Player.URL = ExternalURL;
-            Player.Ctlcontrols.play();
-            play = true;
-            timer1.Start();
-
+            //Player.Ctlcontrols.play();
+            //play = true;
+            //timer1.Start();
         }
         
 
@@ -108,6 +119,14 @@ namespace PlayerUI
             showSubMenu(panelMediaSubMenu);
         }
 
+
+
+        public void CleanRecentMedia()
+        {
+            string[] ClearURLs = new string[0];
+            RecentURLs = ClearURLs;
+            openChildForm(new Form3(this));
+        }
 
 
         public void SetRecentMedia(string RecentURL)
@@ -188,6 +207,15 @@ namespace PlayerUI
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (play == true)
+            {
+                Pausar();
+                position = 0;
+                PBMedia.Value = 0;
+                LblDuration.Text = "00:00:00";
+                LblPosition.Text = "00:00:00";
+            }
+
             openChildForm(new Form3(this));
             //..
             //your codes
@@ -405,18 +433,17 @@ namespace PlayerUI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+
+            //setting PBMedia parameters
             PBMedia.Maximum = (int)Player.currentMedia.duration;
-            //position++;
-            //PBMedia.Value = position;
             PBMedia.Value = (int)Player.Ctlcontrols.currentPosition;
 
-            /*int HourDuration = (int)Player.Ctlcontrols.currentPosition / 3600;
-            int MinuteDuration = (int)Player.Ctlcontrols.currentPosition / 60;
-            int SecondDuration = (int)Player.Ctlcontrols.currentPosition % 60;*/
-
+            //setting time stuff
             int HourDuration = PBMedia.Maximum / 3600;
             int MinuteDuration = PBMedia.Maximum / 60;
             int SecondDuration = PBMedia.Maximum % 60;
+
+            //setting the surrent position of the video in PBMedia and LblPosition
             if (MinuteDuration > 60)
             {
                 LblDuration.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", HourDuration, (MinuteDuration-(HourDuration*60)), SecondDuration);
