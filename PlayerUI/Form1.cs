@@ -27,6 +27,7 @@ namespace PlayerUI
         {
             InitializeComponent();
             hideSubMenu();
+            this.KeyDown += new KeyEventHandler(Form1_KeyDown_1);
         }
 
 
@@ -70,7 +71,6 @@ namespace PlayerUI
         }
 
 
-
         public void ExternalPlay()
         {
             //MessageBox.Show(ExternalURL);
@@ -80,9 +80,11 @@ namespace PlayerUI
             //play = true;
             //timer1.Start();
         }
-        
 
-        public void Pausar()
+
+
+
+                public void Pausar()
         {
             Player.Ctlcontrols.pause();
             play = false;
@@ -94,7 +96,6 @@ namespace PlayerUI
             play = true;
             timer1.Start();
         }
-
 
         private void hideSubMenu()
         {
@@ -136,14 +137,6 @@ namespace PlayerUI
             tempURLs[tempURLs.Length - 1] = RecentURL;
             RecentURLs = tempURLs;
 
-
-
-            /*
-            RecentMediaForm = new Form3(this);
-            this.RecentMediaForm = RecentMediaForm;
-            RecentMediaForm.AddMedia(Path.GetFileName(Player.URL), Player.URL);
-            //MessageBox.Show(Player.URL);
-            */
         }
 
 
@@ -173,6 +166,7 @@ namespace PlayerUI
                     Player.Visible = true;
                     Play();
                     SetRecentMedia(Ruta);
+                    BtnPlay.Select();
                 }
             }
             hideSubMenu();
@@ -188,7 +182,6 @@ namespace PlayerUI
                 LblDuration.Text = "00:00:00";
                 LblPosition.Text = "00:00:00";
             }
-
 
             openChildForm(new Form2(this));
             //..
@@ -232,6 +225,7 @@ namespace PlayerUI
         #region PlayListManagemetSubMenu
         private void button8_Click(object sender, EventArgs e)
         {
+            openChildForm(new Form4());
             //..
             //your codes
             //..
@@ -374,8 +368,8 @@ namespace PlayerUI
                     Pausar();
                 }
             }
+            BtnPlay.Select();
 
-            
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -398,8 +392,7 @@ namespace PlayerUI
 
         private void PBMedia_Scroll(object sender, EventArgs e)
         {
-            //Player.Ctlcontrols.currentPosition = PBMedia.Value;
-            //position = (int)Player.Ctlcontrols.currentPosition;
+            
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
@@ -424,11 +417,50 @@ namespace PlayerUI
             timer1.Stop();
         }
 
+        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void BtnPlay_Click(object sender, EventArgs e)
+        {
+            PBMedia.Enabled = true;
+
+            if (ExternalInput == true)
+            {
+                ExternalPlay();
+                ExternalInput = false;
+            }
+            if (Player.URL == "")
+            {
+                MessageBox.Show("No hay archivo a reproducir");
+            }
+            else
+            {
+                Player.Visible = true;
+                PBMedia.Maximum = (int)Player.currentMedia.duration;
+                //LblDuration.Text = Convert.ToString(Player.currentMedia.duration);
+                if (play == false)
+                {
+                    Play();
+                }
+                else if (play == true)
+                {
+                    Pausar();
+                }
+            }
+        }
+
+        private void Player_ClickEvent(object sender, AxWMPLib._WMPOCXEvents_ClickEvent e)
+        {
+            BtnPlay.Select();
+        }
+
         private void PBMedia_MouseUp(object sender, MouseEventArgs e)
         {
             Player.Ctlcontrols.currentPosition = PBMedia.Value;
             position = (int)Player.Ctlcontrols.currentPosition;
             timer1.Start();
+            BtnPlay.Select();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
