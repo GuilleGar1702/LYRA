@@ -112,6 +112,8 @@
             this.DGVFolder.Size = new System.Drawing.Size(504, 320);
             this.DGVFolder.TabIndex = 2;
             this.DGVFolder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.DGVFolder.SelectionChanged += new System.EventHandler(this.DGVFolder_SelectionChanged);
+            this.DGVFolder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGVFolder_KeyDown);
             // 
             // Nombre
             // 

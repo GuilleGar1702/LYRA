@@ -10,13 +10,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace PlayerUI
 {
-   
-    
+
+
     public partial class Form1 : Form
     {
-        
-        public string[] RecentURLs = new string[0]; 
+
+        public string[] RecentURLs = new string[0];
         public bool ExternalInput = false;
+
+        public string[] PlayList = new string[0];
+        public bool ExternalPlaylist = false;
+        int CurrentElement = 0;
+
         public bool play = false;
         int Second, Minute, Hour = 0;
         int position = 0;
@@ -30,12 +35,12 @@ namespace PlayerUI
             this.KeyDown += new KeyEventHandler(Form1_KeyDown_1);
         }
 
-
-        public void Disposer()
+        private void CleanPlaylist()
         {
-            this.Hide();
+            ExternalPlaylist = false;
+            string[] temp = new string[0];
+            PlayList = temp;
         }
-
 
         public void StopTimer()
         {
@@ -65,6 +70,7 @@ namespace PlayerUI
         public void Reset()
         {
             Pausar();
+            position = 0;
             PBMedia.Value = 0;
             LblDuration.Text = "00:00:00";
             LblPosition.Text = "00:00:00";
@@ -73,18 +79,49 @@ namespace PlayerUI
 
         public void ExternalPlay()
         {
-            //MessageBox.Show(ExternalURL);
             Reset();
             Player.URL = ExternalURL;
-            //Player.Ctlcontrols.play();
-            //play = true;
-            //timer1.Start();
+        }
+
+        public void PlaylistPlay()
+        {
+            Reset();
+            Player.URL = PlayList[CurrentElement];
+            SetVisible();
+            Play();
+        }
+
+        private void NextElement()
+        {
+            CurrentElement++;
+            Reset();
+            Player.URL = PlayList[CurrentElement];
+            Play();
+            if (CurrentElement > PlayList.Length - 2)
+            {
+                ExternalPlaylist = false;
+            }
+        }
+
+        private void PreviusElement()
+        {
+            CurrentElement--;
+            if (CurrentElement > -1)
+            {
+                Reset();
+                Player.URL = PlayList[CurrentElement];
+                Play();
+            }
+            else
+            {
+                MessageBox.Show("There is no previus elements");
+            }
+            
         }
 
 
 
-
-                public void Pausar()
+        public void Pausar()
         {
             Player.Ctlcontrols.pause();
             play = false;
@@ -141,10 +178,48 @@ namespace PlayerUI
 
 
 
+        private void SetTimeStuff()
+        {
+            PBMedia.Maximum = (int)Player.currentMedia.duration;
+            PBMedia.Value = (int)Player.Ctlcontrols.currentPosition;
+
+            //setting time stuff
+            int HourDuration = PBMedia.Maximum / 3600;
+            int MinuteDuration = PBMedia.Maximum / 60;
+            int SecondDuration = PBMedia.Maximum % 60;
+
+            //setting the current position of the video in PBMedia and LblPosition
+            if (MinuteDuration > 60)
+            {
+                LblDuration.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", HourDuration, (MinuteDuration - (HourDuration * 60)), SecondDuration);
+            }
+            else
+            {
+                LblDuration.Text = string.Format("{0:D2}:{1:D2}", MinuteDuration, SecondDuration);
+            }
+            position++;
+            Second = position;
+            if (Second > 59)
+            {
+                Hour = Second / 3600;
+                Minute = Second / 60;
+                Second = Second % 60;
+            }
+            if (MinuteDuration > 60)
+            {
+                LblPosition.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", Hour, (Minute - (Hour * 60)), Second);
+            }
+            else
+            {
+                LblPosition.Text = string.Format("{0:D2}:{1:D2}", Minute, Second);
+            }
+        }
+
 
         #region MediaSubMenu
         private void button2_Click(object sender, EventArgs e)
         {
+            CleanPlaylist();
             if (play == true)
             {
                 Pausar();
@@ -174,6 +249,7 @@ namespace PlayerUI
 
         private void button3_Click(object sender, EventArgs e)
         {
+            CleanPlaylist();
             if (play == true)
             {
                 Pausar();
@@ -200,6 +276,7 @@ namespace PlayerUI
 
         private void button5_Click(object sender, EventArgs e)
         {
+            CleanPlaylist();
             if (play == true)
             {
                 Pausar();
@@ -225,7 +302,7 @@ namespace PlayerUI
         #region PlayListManagemetSubMenu
         private void button8_Click(object sender, EventArgs e)
         {
-            openChildForm(new Form4());
+            openChildForm(new Form4(this));
             //..
             //your codes
             //..
@@ -234,6 +311,7 @@ namespace PlayerUI
 
         private void button7_Click(object sender, EventArgs e)
         {
+            openChildForm(new Form5(this));
             //..
             //your codes
             //..
@@ -342,9 +420,7 @@ namespace PlayerUI
         //Boton de play
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            
             PBMedia.Enabled = true;
-            
             if (ExternalInput == true)
             {
                 ExternalPlay();
@@ -352,13 +428,12 @@ namespace PlayerUI
             }
             if (Player.URL == "")
             {
-                MessageBox.Show("No hay archivo a reproducir");
+                MessageBox.Show("There is no file to play");
             }
             else
             {
                 Player.Visible = true;
                 PBMedia.Maximum = (int)Player.currentMedia.duration;
-                //LblDuration.Text = Convert.ToString(Player.currentMedia.duration);
                 if (play == false)
                 {
                     Play();
@@ -369,7 +444,6 @@ namespace PlayerUI
                 }
             }
             BtnPlay.Select();
-
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -414,7 +488,7 @@ namespace PlayerUI
 
         private void PBMedia_MouseDown(object sender, MouseEventArgs e)
         {
-            timer1.Stop();
+            Pausar();
         }
 
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
@@ -455,59 +529,76 @@ namespace PlayerUI
             BtnPlay.Select();
         }
 
+        private void PBAdelante_Click(object sender, EventArgs e)
+        {
+            position += 10;
+            Player.Ctlcontrols.currentPosition += 10;
+            SetTimeStuff();
+        }
+
+        private void PBAtras_Click(object sender, EventArgs e)
+        {
+            position -= 10;
+            Player.Ctlcontrols.currentPosition -= 10;
+            SetTimeStuff();
+        }
+
+        private void PBStop_Click(object sender, EventArgs e)
+        {
+            Player.Ctlcontrols.stop();
+            Reset();
+        }
+
+        private void PBAdelante_DoubleClick(object sender, EventArgs e)
+        {
+            if (!ExternalPlaylist)
+            {
+                Player.Ctlcontrols.stop();
+                Reset();
+            }
+            else
+            {
+                NextElement();
+            }
+        }
+
+        private void PBAtras_DoubleClick(object sender, EventArgs e)
+        {
+            if (!ExternalPlaylist)
+            {
+                string x = Player.URL;
+                Player.Ctlcontrols.stop();
+                Reset();
+                Player.URL = x;
+            }
+            else
+            {
+                PreviusElement();
+            }
+        }
+
         private void PBMedia_MouseUp(object sender, MouseEventArgs e)
         {
+            Play();
             Player.Ctlcontrols.currentPosition = PBMedia.Value;
             position = (int)Player.Ctlcontrols.currentPosition;
             timer1.Start();
             BtnPlay.Select();
+            SetTimeStuff();
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
 
             //setting PBMedia parameters
-            PBMedia.Maximum = (int)Player.currentMedia.duration;
-            PBMedia.Value = (int)Player.Ctlcontrols.currentPosition;
+            SetTimeStuff();
 
-            //setting time stuff
-            int HourDuration = PBMedia.Maximum / 3600;
-            int MinuteDuration = PBMedia.Maximum / 60;
-            int SecondDuration = PBMedia.Maximum % 60;
-
-            //setting the surrent position of the video in PBMedia and LblPosition
-            if (MinuteDuration > 60)
+            if ((position > (int)Player.currentMedia.duration || PBMedia.Value == PBMedia.Maximum) && ExternalPlaylist)
             {
-                LblDuration.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", HourDuration, (MinuteDuration-(HourDuration*60)), SecondDuration);
+                NextElement();
             }
-            else
-            {
-                LblDuration.Text = string.Format("{0:D2}:{1:D2}", MinuteDuration, SecondDuration);
-            }
-            position++;
-            Second = position;
-            if (Second > 59)
-            {
-                Hour = Second / 3600;
-                Minute = Second / 60;
-                Second = Second % 60;
-            }
-            if (MinuteDuration > 60)
-            {
-                LblPosition.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", Hour, (Minute-(Hour*60)), Second);
-            }
-            else
-            {
-                LblPosition.Text = string.Format("{0:D2}:{1:D2}", Minute, Second);
-            }
-
-            /*if (PBMedia.Value == PBMedia.Maximum)
-            {
-                Pausar();
-
-            }*/
-
-            if (position > (int)Player.currentMedia.duration || PBMedia.Value == PBMedia.Maximum)
+            else if (position > (int)Player.currentMedia.duration || PBMedia.Value == PBMedia.Maximum)
             {
                 timer1.Stop();
                 LblPosition.Text = "00:00:00";

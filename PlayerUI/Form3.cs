@@ -20,8 +20,18 @@ namespace PlayerUI
         {
             InitializeComponent();
             this.Principal = Principal;
-
+            DGVRecentMedia.SelectionChanged += new EventHandler(DGVRecentMedia_SelectionChanged);
         }
+
+        private void SendMedia()
+        {
+            Principal.Reset();
+            Principal.ExternalURL = ElementSelected;
+            Principal.ExternalInput = true;
+            this.Close();
+        }
+
+
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -65,28 +75,38 @@ namespace PlayerUI
 
         private void DGVRecentMedia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            BtnPlay.Enabled = true;
-            int n = e.RowIndex;
-            if (n != -1)
-            {
-                //ElementSelected = (string)DGVRecentMedia.Rows[n].Cells[0].Value;
-                ElementSelected = Principal.RecentURLs[(Principal.RecentURLs.Length-1)-n];
-            }
         }
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
-            //Principal.SetRecentMedia(ElementSelected);
-            Principal.Reset();
-            Principal.ExternalURL = ElementSelected;
-            Principal.ExternalInput = true;
-            this.Close();
+            SendMedia();
         }
 
         private void BtnClean_Click(object sender, EventArgs e)
         {
             this.Close();
             Principal.CleanRecentMedia();
+        }
+
+        private void DGVRecentMedia_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DGVRecentMedia.SelectedCells.Count > 0)
+            {
+                BtnPlay.Enabled = true;
+                int n = DGVRecentMedia.SelectedCells[0].RowIndex;
+                if (n != -1)
+                {
+                    ElementSelected = Principal.RecentURLs[(Principal.RecentURLs.Length - 1) - n];
+                }
+            }
+        }
+
+        private void DGVRecentMedia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendMedia();
+            }
         }
     }
 }

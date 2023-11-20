@@ -173,6 +173,8 @@
             this.DGVRecentMedia.Size = new System.Drawing.Size(504, 320);
             this.DGVRecentMedia.TabIndex = 19;
             this.DGVRecentMedia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVRecentMedia_CellClick);
+            this.DGVRecentMedia.SelectionChanged += new System.EventHandler(this.DGVRecentMedia_SelectionChanged);
+            this.DGVRecentMedia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGVRecentMedia_KeyDown);
             // 
             // Nombre
             // 
