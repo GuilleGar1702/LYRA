@@ -235,7 +235,6 @@ namespace PlayerUI
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     
-                    // Reproducir el archivo seleccionado con Windows Media Player
                     Ruta = openFileDialog.FileName;
                     Player.URL = Ruta;
                     Player.Visible = true;

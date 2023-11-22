@@ -38,8 +38,31 @@ namespace PlayerUI
             }
             BtnBack.Enabled = true;
             BtnOpen.Enabled = false;
+            BtnDelete.Enabled = false;
             BtnPlay.Enabled = true;
         }
+
+        private void RefreshDGV()
+        {
+            DGVPlaylist.Rows.Clear();
+            if (!Directory.Exists(Form4.PlaylistsFolder))
+            {
+                Directory.CreateDirectory(Form4.PlaylistsFolder);
+            }
+
+            string[] Temp = Directory.GetFiles(Form4.PlaylistsFolder);
+            Playlists = Temp;
+            foreach (var File in Playlists)
+            {
+                if (File.EndsWith(".txt"))
+                {
+                    int n = DGVPlaylist.Rows.Add();
+                    DGVPlaylist.Rows[n].Cells[0].Value = System.IO.Path.GetFileNameWithoutExtension(File);
+                }
+            }
+        }
+
+
 
         private void SendMedia()
         {
@@ -59,21 +82,7 @@ namespace PlayerUI
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Form4.PlaylistsFolder))
-            {
-                Directory.CreateDirectory(Form4.PlaylistsFolder);
-            }
-
-            string[] Temp = Directory.GetFiles(Form4.PlaylistsFolder);
-            Playlists = Temp;
-            foreach (var File in Playlists)
-            {
-                if (File.EndsWith(".txt"))
-                {
-                    int n = DGVPlaylist.Rows.Add();
-                    DGVPlaylist.Rows[n].Cells[0].Value = System.IO.Path.GetFileNameWithoutExtension(File);
-                }
-            }
+            RefreshDGV();
         }
 
         private void DGVPlaylist_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -82,23 +91,24 @@ namespace PlayerUI
 
         private void BtnOpen_Click(object sender, EventArgs e)
         {
-            OpenList();
+            if (Playlists.Length>0)
+            {
+                OpenList();
+            }
+            else
+            {
+                MessageBox.Show("There is no PlayLists to show");
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            DGVPlaylist.Rows.Clear();
-            string[] Temp = Directory.GetFiles(Form4.PlaylistsFolder);
-            Playlists = Temp;
-            foreach (var File in Playlists)
-            {
-                if (File.EndsWith(".txt"))
-                {
-                    int n = DGVPlaylist.Rows.Add();
-                    DGVPlaylist.Rows[n].Cells[0].Value = System.IO.Path.GetFileNameWithoutExtension(File);
-                }
-            }
-            BtnOpen.Enabled = false;
+
+            RefreshDGV();
+            //BtnOpen.Enabled = false;
+            BtnOpen.Enabled = true;
+            //BtnDelete.Enabled = false;
+            BtnDelete.Enabled = true;
             BtnBack.Enabled = false;
         }
 
@@ -109,10 +119,12 @@ namespace PlayerUI
                 if (BtnBack.Enabled == false)
                 {
                     BtnOpen.Enabled = true;
+                    BtnDelete.Enabled = true;
                 }
                 else
                 {
                     BtnOpen.Enabled = false;
+                    BtnDelete.Enabled = false;
                 }
                 
                 int ElementeSelected = DGVPlaylist.SelectedCells[0].RowIndex;
@@ -134,6 +146,33 @@ namespace PlayerUI
         private void BtnPlay_Click(object sender, EventArgs e)
         {
             SendMedia();
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (DGVPlaylist.SelectedCells.Count > 0)
+            {
+
+                int x = DGVPlaylist.SelectedCells[0].RowIndex;
+                if (x != -1)
+                {
+                    File.Delete(Playlists[x]);
+                    DGVPlaylist.Rows.Clear();
+                    RefreshDGV();
+                    BtnOpen.Enabled = false;
+                    BtnDelete.Enabled = false;
+                    BtnBack.Enabled = false;
+                }
+            }
+        }
+
+        private void BtnClearAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i<Playlists.Length; i++)
+            {
+                File.Delete(Playlists[i]);
+            }
+            RefreshDGV();
         }
     }
 }
