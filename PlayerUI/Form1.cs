@@ -14,13 +14,18 @@ namespace PlayerUI
 
     public partial class Form1 : Form
     {
-
+        Random random = new Random();
         public string[] RecentURLs = new string[0];
         public bool ExternalInput = false;
 
         public string[] PlayList = new string[0];
+        public string[] MixxedPlaylist = new string[0];
         public bool ExternalPlaylist = false;
         int CurrentElement = 0;
+
+        bool RepeatMode = false;
+        bool RepeatSMode = false;
+        bool ShuffleMode = false;
 
         public bool play = false;
         int Second, Minute, Hour = 0;
@@ -42,10 +47,6 @@ namespace PlayerUI
             PlayList = temp;
         }
 
-        public void StopTimer()
-        {
-            timer1.Stop();
-        }
 
         public void StartTimer()
         {
@@ -70,8 +71,11 @@ namespace PlayerUI
         public void Reset()
         {
             Pausar();
+            Second = 0;
+            Minute = 0;
+            Hour = 0;
             position = 0;
-            PBMedia.Value = 0;
+            MTBPosition.Value = 0;
             LblDuration.Text = "00:00:00";
             LblPosition.Text = "00:00:00";
         }
@@ -83,33 +87,65 @@ namespace PlayerUI
             Player.URL = ExternalURL;
         }
 
+
+        private void Mixxer(string[] mix, int n)
+        {
+            if (n<mix.Length-1)
+            {
+                n++;
+                int x = random.Next(0, mix.Length);
+                string temp = mix[x];
+                int y = random.Next(0, mix.Length);
+                mix[x] = mix[y];
+                mix[y] = temp;
+                Mixxer(mix, n);
+            }
+            else
+            {
+                MixxedPlaylist = mix;
+                
+            }
+        }
+
         public void PlaylistPlay()
         {
+            CurrentElement = 0;
             Reset();
             Player.URL = PlayList[CurrentElement];
             SetVisible();
             Play();
         }
 
-        private void NextElement()
+        private void NextElement(string[] PL)
         {
             CurrentElement++;
             Reset();
-            Player.URL = PlayList[CurrentElement];
+            SetTimeStuff();
+            Player.URL = PL[CurrentElement];
             Play();
             if (CurrentElement > PlayList.Length - 2)
             {
-                ExternalPlaylist = false;
+                if (RepeatMode)
+                {
+                    CurrentElement = 0;
+                    Reset();
+                    Player.URL = PL[CurrentElement];
+                    Play();
+                }
+                else
+                {
+                    ExternalPlaylist = false;
+                }
             }
         }
 
-        private void PreviusElement()
+        private void PreviusElement(string[] PL)
         {
             CurrentElement--;
             if (CurrentElement > -1)
             {
                 Reset();
-                Player.URL = PlayList[CurrentElement];
+                Player.URL = PL[CurrentElement];
                 Play();
             }
             else
@@ -125,12 +161,14 @@ namespace PlayerUI
         {
             Player.Ctlcontrols.pause();
             play = false;
+            PBPlay.Image = Properties.Resources.play2;
             timer1.Stop();
         }
         public void Play()
         {
             Player.Ctlcontrols.play();
             play = true;
+            PBPlay.Image = Properties.Resources.Pause;
             timer1.Start();
         }
 
@@ -180,15 +218,15 @@ namespace PlayerUI
 
         private void SetTimeStuff()
         {
-            PBMedia.Maximum = (int)Player.currentMedia.duration;
-            PBMedia.Value = (int)Player.Ctlcontrols.currentPosition;
+            MTBPosition.Maximum = (int)Player.currentMedia.duration-1;
+            MTBPosition.Value = (int)Player.Ctlcontrols.currentPosition;
 
             //setting time stuff
-            int HourDuration = PBMedia.Maximum / 3600;
-            int MinuteDuration = PBMedia.Maximum / 60;
-            int SecondDuration = PBMedia.Maximum % 60;
+            int HourDuration = (MTBPosition.Maximum / 3600);
+            int MinuteDuration =( MTBPosition.Maximum / 60);
+            int SecondDuration = (MTBPosition.Maximum % 60)+1;
 
-            //setting the current position of the video in PBMedia and LblPosition
+            //setting the current position of the video in MTBPosition and LblPosition
             if (MinuteDuration > 60)
             {
                 LblDuration.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", HourDuration, (MinuteDuration - (HourDuration * 60)), SecondDuration);
@@ -207,11 +245,11 @@ namespace PlayerUI
             }
             if (MinuteDuration > 60)
             {
-                LblPosition.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", Hour, (Minute - (Hour * 60)), Second);
+                LblPosition.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", Hour, (Minute - (Hour * 60)), Second-1);
             }
             else
             {
-                LblPosition.Text = string.Format("{0:D2}:{1:D2}", Minute, Second);
+                LblPosition.Text = string.Format("{0:D2}:{1:D2}", Minute, Second-1);
             }
         }
 
@@ -224,7 +262,7 @@ namespace PlayerUI
             {
                 Pausar();
                 position = 0;
-                PBMedia.Value = 0;
+                MTBPosition.Value = 0;
                 LblDuration.Text = "00:00:00";
                 LblPosition.Text = "00:00:00";
             }
@@ -253,7 +291,7 @@ namespace PlayerUI
             {
                 Pausar();
                 position = 0;
-                PBMedia.Value = 0;
+                MTBPosition.Value = 0;
                 LblDuration.Text = "00:00:00";
                 LblPosition.Text = "00:00:00";
             }
@@ -280,7 +318,7 @@ namespace PlayerUI
             {
                 Pausar();
                 position = 0;
-                PBMedia.Value = 0;
+                MTBPosition.Value = 0;
                 LblDuration.Text = "00:00:00";
                 LblPosition.Text = "00:00:00";
             }
@@ -419,7 +457,7 @@ namespace PlayerUI
         //Boton de play
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            PBMedia.Enabled = true;
+            MTBPosition.Enabled = true;
             if (ExternalInput == true)
             {
                 ExternalPlay();
@@ -432,7 +470,7 @@ namespace PlayerUI
             else
             {
                 Player.Visible = true;
-                PBMedia.Maximum = (int)Player.currentMedia.duration;
+                MTBPosition.Maximum = (int)Player.currentMedia.duration;
                 if (play == false)
                 {
                     Play();
@@ -445,50 +483,45 @@ namespace PlayerUI
             BtnPlay.Select();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+
+        private void BtnFullScreen_Click(object sender, EventArgs e) //Shuffle button
         {
-            LblVolumen.Text = (trackBar1.Value).ToString() + "%";
-            Player.settings.volume = trackBar1.Value;
+            if (ExternalPlaylist)
+            {
+                if (!ShuffleMode)
+                {
+                    Mixxer(PlayList, 0);
+                    PBShuffle.Image = Properties.Resources.Shuffle;
+                    ShuffleMode = true;
+
+                }
+                else
+                {
+                    PBShuffle.Image = Properties.Resources.ShuffleOff;
+                    ShuffleMode = false;
+                }
+
+            }
         }
 
-        private void BtnFullScreen_Click(object sender, EventArgs e)
-        {
-            if (Player.fullScreen == false)
-            {
-                Player.fullScreen = true;
-            }
-            else
-            {
-                Player.fullScreen = false;
-            }
-        }
-
-        private void PBMedia_Scroll(object sender, EventArgs e)
-        {
-            
-        }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            if (trackBar1.Value != 0)
+            if (MTBVolume.Value != 0)
             {
-                TempVol = trackBar1.Value;
-                trackBar1.Value = 0;
+                TempVol = MTBVolume.Value;
+                MTBVolume.Value = 0;
                 Player.settings.mute = true;
-                LblVolumen.Text = trackBar1.Value.ToString() + "%";
+                LblVolumen.Text = MTBVolume.Value.ToString() + "%";
             }
             else
             {
-                trackBar1.Value = TempVol;
-                LblVolumen.Text = trackBar1.Value.ToString() + "%";
+                MTBVolume.Value = TempVol;
+                LblVolumen.Text = MTBVolume.Value.ToString() + "%";
                 Player.settings.mute = false;
             }
         }
 
-        private void PBMedia_MouseDown(object sender, MouseEventArgs e)
-        {
-            Pausar();
-        }
 
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
         {
@@ -496,7 +529,7 @@ namespace PlayerUI
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
-            PBMedia.Enabled = true;
+            MTBPosition.Enabled = true;
 
             if (ExternalInput == true)
             {
@@ -510,7 +543,7 @@ namespace PlayerUI
             else
             {
                 Player.Visible = true;
-                PBMedia.Maximum = (int)Player.currentMedia.duration;
+                MTBPosition.Maximum = (int)Player.currentMedia.duration;
                 //LblDuration.Text = Convert.ToString(Player.currentMedia.duration);
                 if (play == false)
                 {
@@ -557,7 +590,14 @@ namespace PlayerUI
             }
             else
             {
-                NextElement();
+                if (ShuffleMode)
+                {
+                    NextElement(MixxedPlaylist);
+                }
+                else
+                {
+                    NextElement(PlayList);
+                }
             }
         }
 
@@ -572,39 +612,159 @@ namespace PlayerUI
             }
             else
             {
-                PreviusElement();
+                if (ShuffleMode)
+                {
+                    PreviusElement(MixxedPlaylist);
+                }
+                else
+                {
+                    PreviusElement(PlayList);
+                }
             }
         }
 
-        private void PBMedia_MouseUp(object sender, MouseEventArgs e)
+        private void MTBPosition_Scroll(object sender, EventArgs e)
+        {
+            LblVolumen.Text = (MTBVolume.Value).ToString() + "%";
+            Player.settings.volume = MTBVolume.Value;
+        }
+
+        private void MTBPosition_MouseDown(object sender, MouseEventArgs e)
+        {
+            Pausar();
+            //LblChange.Visible = true;
+        }
+
+        private void PBRepeat_Click(object sender, EventArgs e)
+        {
+            if (ExternalPlaylist)
+            {
+                if (RepeatMode)
+                {
+                    RepeatMode = false;
+                    RepeatSMode = false;
+                    PBRepeat.Image = Properties.Resources.RepeatOff;
+                }
+                else
+                {
+                    RepeatMode = true;
+                    RepeatSMode = false;
+                    PBRepeat.Image = Properties.Resources.Repeat;
+                }
+            }
+            else
+            {
+                if (RepeatSMode)
+                {
+                    RepeatSMode = false;
+                    RepeatMode = false;
+                    PBRepeat.Image = Properties.Resources.RepeatOff;
+                }
+                else
+                {
+                    RepeatSMode = true;
+                    RepeatMode = false;
+                    PBRepeat.Image = Properties.Resources.RepeatS;
+                }
+            }
+        }
+
+        private void PBRepeat_DoubleClick(object sender, EventArgs e)
+        {
+            if (ExternalPlaylist)
+            {
+                if (RepeatSMode)
+                {
+                    RepeatSMode = false;
+                    RepeatMode = false;
+                    PBRepeat.Image = Properties.Resources.RepeatOff;
+                }
+                else
+                {
+                    RepeatSMode = true;
+                    RepeatMode = false;
+                    PBRepeat.Image = Properties.Resources.RepeatS;
+                }
+            }
+        }
+
+        private void MTBPosition_Scroll_1(object sender, EventArgs e)
+        {
+            /*if ((MTBPosition.Maximum / 60) > 60)
+            {
+                LblChange.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", Hour, (Minute - (Hour * 60)), Second - 1);
+            }
+            else
+            {
+                LblChange.Text = string.Format("{0:D2}:{1:D2}", Minute, Second - 1);
+            }*/
+        }
+
+        private void MTBPosition_MouseUp(object sender, MouseEventArgs e)
         {
             Play();
-            Player.Ctlcontrols.currentPosition = PBMedia.Value;
+            Player.Ctlcontrols.currentPosition = MTBPosition.Value;
             position = (int)Player.Ctlcontrols.currentPosition;
             timer1.Start();
             BtnPlay.Select();
             SetTimeStuff();
-
+            //LblChange.Visible = false;
         }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            //setting PBMedia parameters
+            //setting MTBPosition parameters
             SetTimeStuff();
 
-            if ((position > (int)Player.currentMedia.duration || PBMedia.Value == PBMedia.Maximum) && ExternalPlaylist)
+            if ((position > (int)Player.currentMedia.duration) && ExternalPlaylist)
             {
-                NextElement();
+                if (ShuffleMode)
+                {
+                    if (RepeatSMode)
+                    {
+                        Player.Ctlcontrols.stop();
+                        Reset();
+                        Play();
+                    }
+                    else
+                    {
+                        NextElement(MixxedPlaylist);
+                    }
+                }
+                else
+                {
+                    if (RepeatSMode)
+                    {
+                        Player.Ctlcontrols.stop();
+                        Reset();
+                        Play();
+                    }
+                    else
+                    {
+                        NextElement(PlayList);
+                    }
+                }
             }
-            else if (position > (int)Player.currentMedia.duration || PBMedia.Value == PBMedia.Maximum)
+            else if (position > (int)Player.currentMedia.duration)
             {
-                timer1.Stop();
-                LblPosition.Text = "00:00:00";
-                position = 0;
-                PBMedia.Value = 0;
-                play = false;
-                PBMedia.Enabled = false;
+                if (RepeatSMode)
+                {
+                    Player.Ctlcontrols.stop();
+                    Reset();
+                    Play();
+                }
+                else
+                {
+                    timer1.Stop();
+                    LblPosition.Text = "00:00:00";
+                    position = 0;
+                    MTBPosition.Value = 0;
+                    play = false;
+                    MTBPosition.Enabled = false;
+                    PBPlay.Image = Properties.Resources.play2;
+                }
             }
         }
     }

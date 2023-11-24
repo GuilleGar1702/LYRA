@@ -15,6 +15,7 @@ namespace PlayerUI
     {
         private Form1 Principal;
         int ElementSelected;
+        string PlaylistToExport;
         string[] Playlists = new string[0];
         string[] PlaylistSelected = new string[0];
         public Form5(Form1 Principal)
@@ -25,21 +26,31 @@ namespace PlayerUI
         }
 
 
-        private void OpenList()
+
+        private void PrintDGV()
         {
-            DGVPlaylist.Rows.Clear();
-            string[] Temp = File.ReadAllLines(Playlists[ElementSelected]);
-            PlaylistSelected = Temp;
             foreach (var File in PlaylistSelected)
             {
                 int n = DGVPlaylist.Rows.Add();
                 DGVPlaylist.Rows[n].Cells[0].Value = System.IO.Path.GetFileName(File);
 
             }
+        }
+
+
+
+        private void OpenList()
+        {
+            DGVPlaylist.Rows.Clear();
+            PlaylistToExport = System.IO.Path.GetFileNameWithoutExtension(Playlists[ElementSelected]);
+            string[] Temp = File.ReadAllLines(Playlists[ElementSelected]);
+            PlaylistSelected = Temp;
+            PrintDGV();
             BtnBack.Enabled = true;
             BtnOpen.Enabled = false;
             BtnDelete.Enabled = false;
             BtnPlay.Enabled = true;
+            BtnExport.Enabled = true;
         }
 
         private void RefreshDGV()
@@ -61,9 +72,6 @@ namespace PlayerUI
                 }
             }
         }
-
-
-
         private void SendMedia()
         {
 
@@ -110,6 +118,7 @@ namespace PlayerUI
             //BtnDelete.Enabled = false;
             BtnDelete.Enabled = true;
             BtnBack.Enabled = false;
+            BtnExport.Enabled = false;
         }
 
         private void DGVPlaylist_SelectionChanged(object sender, EventArgs e)
@@ -173,6 +182,39 @@ namespace PlayerUI
                 File.Delete(Playlists[i]);
             }
             RefreshDGV();
+        }
+
+        private void BtnExport_Click(object sender, EventArgs e)
+        {
+            string[] Temp = File.ReadAllLines(Playlists[ElementSelected]);
+            PlaylistSelected = Temp;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+
+                    string FolderSelected = folderBrowserDialog.SelectedPath;
+                    string DestinyFolder = Path.Combine(FolderSelected, PlaylistToExport);
+                    if (!Directory.Exists(DestinyFolder))
+                    {
+                        Directory.CreateDirectory(DestinyFolder);
+                    }
+                    foreach (var song in PlaylistSelected)
+                    {
+                        string file = System.IO.Path.GetFileName(song);
+                        string Destiny = Path.Combine(DestinyFolder, file);
+                        File.Copy(song, Destiny);
+                    }
+
+                    MessageBox.Show("Your Playlist has been exported succesfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There has been a problem with the export, try again or restart the program. You also can check if it is all right with your folders. " + "Error: " + ex);
+                }
+
+            }
         }
     }
 }

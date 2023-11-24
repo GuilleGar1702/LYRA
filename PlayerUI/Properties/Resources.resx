@@ -175,4 +175,16 @@
   <data name="Tools2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tools2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="RepeatOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RepeatOff.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RepeatS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RepeatS.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Shuffle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Shuffle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShuffleOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShuffleOff.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

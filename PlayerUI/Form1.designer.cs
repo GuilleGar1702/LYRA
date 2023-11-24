@@ -31,71 +31,64 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelSideMenu = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.panelToolsSubMenu = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.btnTools = new System.Windows.Forms.Button();
-            this.btnEqualizer = new System.Windows.Forms.Button();
             this.panelPlaylistSubMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.BtnManagePL = new System.Windows.Forms.Button();
             this.BtnNewPL = new System.Windows.Forms.Button();
-            this.btnPlaylist = new System.Windows.Forms.Button();
             this.panelMediaSubMenu = new System.Windows.Forms.Panel();
             this.BtnRecentMedia = new System.Windows.Forms.Button();
             this.BtnOpenFolder = new System.Windows.Forms.Button();
             this.BtnOpenFile = new System.Windows.Forms.Button();
-            this.btnMedia = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPlayer = new System.Windows.Forms.Panel();
+            this.MTBPosition = new XComponent.SliderBar.MACTrackBar();
+            this.MTBVolume = new XComponent.SliderBar.MACTrackBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.BtnFullScreen = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.PBMedia = new System.Windows.Forms.TrackBar();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.LblVolumen = new System.Windows.Forms.Label();
             this.LblPosition = new System.Windows.Forms.Label();
             this.LblDuration = new System.Windows.Forms.Label();
+            this.BtnPlay = new System.Windows.Forms.Button();
+            this.panelChildForm = new System.Windows.Forms.Panel();
+            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.PBShuffle = new System.Windows.Forms.PictureBox();
             this.BtnVolumen = new System.Windows.Forms.PictureBox();
             this.PBStop = new System.Windows.Forms.PictureBox();
             this.PBRepeat = new System.Windows.Forms.PictureBox();
             this.PBAtras = new System.Windows.Forms.PictureBox();
             this.PBAdelante = new System.Windows.Forms.PictureBox();
             this.PBPlay = new System.Windows.Forms.PictureBox();
-            this.BtnPlay = new System.Windows.Forms.Button();
-            this.panelChildForm = new System.Windows.Forms.Panel();
-            this.Player = new AxWMPLib.AxWindowsMediaPlayer();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.btnTools = new System.Windows.Forms.Button();
+            this.btnEqualizer = new System.Windows.Forms.Button();
+            this.btnPlaylist = new System.Windows.Forms.Button();
+            this.btnMedia = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LblChange = new System.Windows.Forms.Label();
             this.panelSideMenu.SuspendLayout();
             this.panelToolsSubMenu.SuspendLayout();
             this.panelPlaylistSubMenu.SuspendLayout();
             this.panelMediaSubMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPlayer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnFullScreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBMedia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.panelChildForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBShuffle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnVolumen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBStop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBRepeat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBAdelante)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPlay)).BeginInit();
-            this.panelChildForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -118,50 +111,6 @@
             this.panelSideMenu.Size = new System.Drawing.Size(250, 561);
             this.panelSideMenu.TabIndex = 0;
             // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.Silver;
-            this.btnExit.Image = global::PlayerUI.Properties.Resources.Exit2;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 726);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnExit.Size = new System.Drawing.Size(233, 45);
-            this.btnExit.TabIndex = 9;
-            this.btnExit.Text = "  Exit";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHelp.FlatAppearance.BorderSize = 0;
-            this.btnHelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.ForeColor = System.Drawing.Color.Silver;
-            this.btnHelp.Image = global::PlayerUI.Properties.Resources.Help2;
-            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.Location = new System.Drawing.Point(0, 681);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnHelp.Size = new System.Drawing.Size(233, 45);
-            this.btnHelp.TabIndex = 8;
-            this.btnHelp.Text = "  Help";
-            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
-            // 
             // panelToolsSubMenu
             // 
             this.panelToolsSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(18)))), ((int)(((byte)(35)))));
@@ -169,7 +118,7 @@
             this.panelToolsSubMenu.Controls.Add(this.button12);
             this.panelToolsSubMenu.Controls.Add(this.button13);
             this.panelToolsSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelToolsSubMenu.Location = new System.Drawing.Point(0, 551);
+            this.panelToolsSubMenu.Location = new System.Drawing.Point(0, 472);
             this.panelToolsSubMenu.Name = "panelToolsSubMenu";
             this.panelToolsSubMenu.Size = new System.Drawing.Size(233, 130);
             this.panelToolsSubMenu.TabIndex = 7;
@@ -233,104 +182,16 @@
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // btnTools
-            // 
-            this.btnTools.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTools.FlatAppearance.BorderSize = 0;
-            this.btnTools.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnTools.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTools.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTools.ForeColor = System.Drawing.Color.Silver;
-            this.btnTools.Image = global::PlayerUI.Properties.Resources.Tools2;
-            this.btnTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTools.Location = new System.Drawing.Point(0, 506);
-            this.btnTools.Name = "btnTools";
-            this.btnTools.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnTools.Size = new System.Drawing.Size(233, 45);
-            this.btnTools.TabIndex = 6;
-            this.btnTools.Text = "  Tools";
-            this.btnTools.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTools.UseVisualStyleBackColor = true;
-            this.btnTools.Visible = false;
-            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
-            // 
-            // btnEqualizer
-            // 
-            this.btnEqualizer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEqualizer.FlatAppearance.BorderSize = 0;
-            this.btnEqualizer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnEqualizer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnEqualizer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEqualizer.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEqualizer.ForeColor = System.Drawing.Color.Silver;
-            this.btnEqualizer.Image = global::PlayerUI.Properties.Resources.Equalizer2;
-            this.btnEqualizer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEqualizer.Location = new System.Drawing.Point(0, 461);
-            this.btnEqualizer.Name = "btnEqualizer";
-            this.btnEqualizer.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnEqualizer.Size = new System.Drawing.Size(233, 45);
-            this.btnEqualizer.TabIndex = 5;
-            this.btnEqualizer.Text = "  Equalizer";
-            this.btnEqualizer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEqualizer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEqualizer.UseVisualStyleBackColor = true;
-            this.btnEqualizer.Visible = false;
-            this.btnEqualizer.Click += new System.EventHandler(this.btnEqualizer_Click);
-            // 
             // panelPlaylistSubMenu
             // 
             this.panelPlaylistSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelPlaylistSubMenu.Controls.Add(this.button1);
-            this.panelPlaylistSubMenu.Controls.Add(this.button6);
             this.panelPlaylistSubMenu.Controls.Add(this.BtnManagePL);
             this.panelPlaylistSubMenu.Controls.Add(this.BtnNewPL);
             this.panelPlaylistSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelPlaylistSubMenu.Location = new System.Drawing.Point(0, 302);
             this.panelPlaylistSubMenu.Name = "panelPlaylistSubMenu";
-            this.panelPlaylistSubMenu.Size = new System.Drawing.Size(233, 159);
+            this.panelPlaylistSubMenu.Size = new System.Drawing.Size(233, 80);
             this.panelPlaylistSubMenu.TabIndex = 4;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(18)))), ((int)(((byte)(35)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Silver;
-            this.button1.Location = new System.Drawing.Point(0, 120);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(233, 40);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Export playlist";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(18)))), ((int)(((byte)(35)))));
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.Silver;
-            this.button6.Location = new System.Drawing.Point(0, 80);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button6.Size = new System.Drawing.Size(233, 40);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Import playlist";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // BtnManagePL
             // 
@@ -371,28 +232,6 @@
             this.BtnNewPL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnNewPL.UseVisualStyleBackColor = false;
             this.BtnNewPL.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // btnPlaylist
-            // 
-            this.btnPlaylist.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPlaylist.FlatAppearance.BorderSize = 0;
-            this.btnPlaylist.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnPlaylist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlaylist.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlaylist.ForeColor = System.Drawing.Color.Silver;
-            this.btnPlaylist.Image = global::PlayerUI.Properties.Resources.PlayList1;
-            this.btnPlaylist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlaylist.Location = new System.Drawing.Point(0, 257);
-            this.btnPlaylist.Name = "btnPlaylist";
-            this.btnPlaylist.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnPlaylist.Size = new System.Drawing.Size(233, 45);
-            this.btnPlaylist.TabIndex = 3;
-            this.btnPlaylist.Text = "  Playlist management";
-            this.btnPlaylist.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlaylist.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPlaylist.UseVisualStyleBackColor = true;
-            this.btnPlaylist.Click += new System.EventHandler(this.btnPlaylist_Click);
             // 
             // panelMediaSubMenu
             // 
@@ -466,28 +305,6 @@
             this.BtnOpenFile.UseVisualStyleBackColor = false;
             this.BtnOpenFile.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btnMedia
-            // 
-            this.btnMedia.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMedia.FlatAppearance.BorderSize = 0;
-            this.btnMedia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnMedia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMedia.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMedia.ForeColor = System.Drawing.Color.Silver;
-            this.btnMedia.Image = global::PlayerUI.Properties.Resources.Media2;
-            this.btnMedia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMedia.Location = new System.Drawing.Point(0, 92);
-            this.btnMedia.Name = "btnMedia";
-            this.btnMedia.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnMedia.Size = new System.Drawing.Size(233, 45);
-            this.btnMedia.TabIndex = 1;
-            this.btnMedia.Text = "  Media";
-            this.btnMedia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMedia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMedia.UseVisualStyleBackColor = true;
-            this.btnMedia.Click += new System.EventHandler(this.btnMedia_Click);
-            // 
             // panelLogo
             // 
             this.panelLogo.Controls.Add(this.pictureBox1);
@@ -497,27 +314,14 @@
             this.panelLogo.Size = new System.Drawing.Size(233, 92);
             this.panelLogo.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(36, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(160, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panelPlayer
             // 
             this.panelPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.panelPlayer.Controls.Add(this.LblChange);
+            this.panelPlayer.Controls.Add(this.MTBPosition);
+            this.panelPlayer.Controls.Add(this.MTBVolume);
             this.panelPlayer.Controls.Add(this.label1);
-            this.panelPlayer.Controls.Add(this.BtnFullScreen);
-            this.panelPlayer.Controls.Add(this.label5);
-            this.panelPlayer.Controls.Add(this.label6);
-            this.panelPlayer.Controls.Add(this.PBMedia);
-            this.panelPlayer.Controls.Add(this.label4);
-            this.panelPlayer.Controls.Add(this.label3);
-            this.panelPlayer.Controls.Add(this.trackBar1);
+            this.panelPlayer.Controls.Add(this.PBShuffle);
             this.panelPlayer.Controls.Add(this.LblVolumen);
             this.panelPlayer.Controls.Add(this.LblPosition);
             this.panelPlayer.Controls.Add(this.LblDuration);
@@ -534,6 +338,60 @@
             this.panelPlayer.Size = new System.Drawing.Size(684, 130);
             this.panelPlayer.TabIndex = 1;
             // 
+            // MTBPosition
+            // 
+            this.MTBPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.MTBPosition.BackColor = System.Drawing.Color.Transparent;
+            this.MTBPosition.BorderColor = System.Drawing.Color.DarkRed;
+            this.MTBPosition.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MTBPosition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
+            this.MTBPosition.IndentHeight = 6;
+            this.MTBPosition.Location = new System.Drawing.Point(71, 80);
+            this.MTBPosition.Maximum = 100;
+            this.MTBPosition.Minimum = 0;
+            this.MTBPosition.Name = "MTBPosition";
+            this.MTBPosition.Size = new System.Drawing.Size(543, 28);
+            this.MTBPosition.TabIndex = 22;
+            this.MTBPosition.TextTickStyle = System.Windows.Forms.TickStyle.None;
+            this.MTBPosition.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(146)))), ((int)(((byte)(148)))));
+            this.MTBPosition.TickHeight = 4;
+            this.MTBPosition.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.MTBPosition.TrackerColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(49)))), ((int)(((byte)(156)))));
+            this.MTBPosition.TrackerSize = new System.Drawing.Size(16, 16);
+            this.MTBPosition.TrackLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.MTBPosition.TrackLineHeight = 3;
+            this.MTBPosition.TrackLineSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MTBPosition.Value = 0;
+            this.MTBPosition.Scroll += new System.EventHandler(this.MTBPosition_Scroll_1);
+            this.MTBPosition.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MTBPosition_MouseDown);
+            this.MTBPosition.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MTBPosition_MouseUp);
+            // 
+            // MTBVolume
+            // 
+            this.MTBVolume.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.MTBVolume.BackColor = System.Drawing.Color.Transparent;
+            this.MTBVolume.BorderColor = System.Drawing.Color.DarkRed;
+            this.MTBVolume.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MTBVolume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(125)))), ((int)(((byte)(123)))));
+            this.MTBVolume.IndentHeight = 6;
+            this.MTBVolume.Location = new System.Drawing.Point(404, 32);
+            this.MTBVolume.Maximum = 100;
+            this.MTBVolume.Minimum = 0;
+            this.MTBVolume.Name = "MTBVolume";
+            this.MTBVolume.Size = new System.Drawing.Size(200, 28);
+            this.MTBVolume.TabIndex = 21;
+            this.MTBVolume.TextTickStyle = System.Windows.Forms.TickStyle.None;
+            this.MTBVolume.TickColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(146)))), ((int)(((byte)(148)))));
+            this.MTBVolume.TickHeight = 4;
+            this.MTBVolume.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.MTBVolume.TrackerColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(49)))), ((int)(((byte)(156)))));
+            this.MTBVolume.TrackerSize = new System.Drawing.Size(16, 16);
+            this.MTBVolume.TrackLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.MTBVolume.TrackLineHeight = 3;
+            this.MTBVolume.TrackLineSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MTBVolume.Value = 50;
+            this.MTBVolume.Scroll += new System.EventHandler(this.MTBPosition_Scroll);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -541,82 +399,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 42);
             this.label1.TabIndex = 20;
-            // 
-            // BtnFullScreen
-            // 
-            this.BtnFullScreen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnFullScreen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnFullScreen.Image = ((System.Drawing.Image)(resources.GetObject("BtnFullScreen.Image")));
-            this.BtnFullScreen.Location = new System.Drawing.Point(94, 30);
-            this.BtnFullScreen.Name = "BtnFullScreen";
-            this.BtnFullScreen.Size = new System.Drawing.Size(32, 32);
-            this.BtnFullScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BtnFullScreen.TabIndex = 18;
-            this.BtnFullScreen.TabStop = false;
-            this.BtnFullScreen.Click += new System.EventHandler(this.BtnFullScreen_Click);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Location = new System.Drawing.Point(62, 105);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(560, 13);
-            this.label5.TabIndex = 17;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.Location = new System.Drawing.Point(65, 68);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(557, 13);
-            this.label6.TabIndex = 16;
-            // 
-            // PBMedia
-            // 
-            this.PBMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.PBMedia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PBMedia.Location = new System.Drawing.Point(67, 72);
-            this.PBMedia.Maximum = 100;
-            this.PBMedia.Name = "PBMedia";
-            this.PBMedia.Size = new System.Drawing.Size(548, 45);
-            this.PBMedia.TabIndex = 15;
-            this.PBMedia.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.PBMedia.Scroll += new System.EventHandler(this.PBMedia_Scroll);
-            this.PBMedia.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PBMedia_MouseDown);
-            this.PBMedia.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PBMedia_MouseUp);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.Location = new System.Drawing.Point(413, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(189, 13);
-            this.label4.TabIndex = 14;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.Location = new System.Drawing.Point(409, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(189, 13);
-            this.label3.TabIndex = 13;
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.trackBar1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.trackBar1.Location = new System.Drawing.Point(402, 24);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(200, 45);
-            this.trackBar1.TabIndex = 12;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBar1.Value = 50;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // LblVolumen
             // 
@@ -653,6 +435,83 @@
             this.LblDuration.TabIndex = 9;
             this.LblDuration.Text = "00:00:00";
             // 
+            // BtnPlay
+            // 
+            this.BtnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnPlay.Location = new System.Drawing.Point(24, 27);
+            this.BtnPlay.Name = "BtnPlay";
+            this.BtnPlay.Size = new System.Drawing.Size(28, 30);
+            this.BtnPlay.TabIndex = 19;
+            this.BtnPlay.Text = "button2";
+            this.BtnPlay.UseVisualStyleBackColor = true;
+            this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
+            // 
+            // panelChildForm
+            // 
+            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(18)))), ((int)(((byte)(35)))));
+            this.panelChildForm.Controls.Add(this.Player);
+            this.panelChildForm.Controls.Add(this.pictureBox9);
+            this.panelChildForm.Controls.Add(this.pictureBox10);
+            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChildForm.Location = new System.Drawing.Point(250, 0);
+            this.panelChildForm.Name = "panelChildForm";
+            this.panelChildForm.Size = new System.Drawing.Size(684, 431);
+            this.panelChildForm.TabIndex = 2;
+            // 
+            // Player
+            // 
+            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Player.Enabled = true;
+            this.Player.Location = new System.Drawing.Point(0, 0);
+            this.Player.Name = "Player";
+            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
+            this.Player.Size = new System.Drawing.Size(684, 431);
+            this.Player.TabIndex = 4;
+            this.Player.Visible = false;
+            this.Player.ClickEvent += new AxWMPLib._WMPOCXEvents_ClickEventHandler(this.Player_ClickEvent);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(233, 67);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(220, 220);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 2;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.Location = new System.Drawing.Point(233, 268);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(220, 92);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 3;
+            this.pictureBox10.TabStop = false;
+            // 
+            // PBShuffle
+            // 
+            this.PBShuffle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PBShuffle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PBShuffle.Image = global::PlayerUI.Properties.Resources.ShuffleOff;
+            this.PBShuffle.Location = new System.Drawing.Point(94, 30);
+            this.PBShuffle.Name = "PBShuffle";
+            this.PBShuffle.Size = new System.Drawing.Size(32, 32);
+            this.PBShuffle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBShuffle.TabIndex = 18;
+            this.PBShuffle.TabStop = false;
+            this.PBShuffle.Click += new System.EventHandler(this.BtnFullScreen_Click);
+            // 
             // BtnVolumen
             // 
             this.BtnVolumen.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -682,13 +541,15 @@
             // 
             this.PBRepeat.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PBRepeat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PBRepeat.Image = global::PlayerUI.Properties.Resources.Repeat;
+            this.PBRepeat.Image = global::PlayerUI.Properties.Resources.RepeatOff;
             this.PBRepeat.Location = new System.Drawing.Point(327, 30);
             this.PBRepeat.Name = "PBRepeat";
             this.PBRepeat.Size = new System.Drawing.Size(32, 32);
             this.PBRepeat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PBRepeat.TabIndex = 4;
             this.PBRepeat.TabStop = false;
+            this.PBRepeat.Click += new System.EventHandler(this.PBRepeat_Click);
+            this.PBRepeat.DoubleClick += new System.EventHandler(this.PBRepeat_DoubleClick);
             // 
             // PBAtras
             // 
@@ -731,69 +592,162 @@
             this.PBPlay.TabStop = false;
             this.PBPlay.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // BtnPlay
+            // btnExit
             // 
-            this.BtnPlay.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnPlay.Location = new System.Drawing.Point(24, 27);
-            this.BtnPlay.Name = "BtnPlay";
-            this.BtnPlay.Size = new System.Drawing.Size(28, 30);
-            this.BtnPlay.TabIndex = 19;
-            this.BtnPlay.Text = "button2";
-            this.BtnPlay.UseVisualStyleBackColor = true;
-            this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.Silver;
+            this.btnExit.Image = global::PlayerUI.Properties.Resources.Exit2;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(0, 647);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnExit.Size = new System.Drawing.Size(233, 45);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "  Exit";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // panelChildForm
+            // btnHelp
             // 
-            this.panelChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(18)))), ((int)(((byte)(35)))));
-            this.panelChildForm.Controls.Add(this.Player);
-            this.panelChildForm.Controls.Add(this.pictureBox9);
-            this.panelChildForm.Controls.Add(this.pictureBox10);
-            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.Location = new System.Drawing.Point(250, 0);
-            this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(684, 431);
-            this.panelChildForm.TabIndex = 2;
+            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHelp.FlatAppearance.BorderSize = 0;
+            this.btnHelp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.Silver;
+            this.btnHelp.Image = global::PlayerUI.Properties.Resources.Help2;
+            this.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.Location = new System.Drawing.Point(0, 602);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnHelp.Size = new System.Drawing.Size(233, 45);
+            this.btnHelp.TabIndex = 8;
+            this.btnHelp.Text = "  Help";
+            this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
-            // Player
+            // btnTools
             // 
-            this.Player.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Player.Enabled = true;
-            this.Player.Location = new System.Drawing.Point(0, 0);
-            this.Player.Name = "Player";
-            this.Player.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Player.OcxState")));
-            this.Player.Size = new System.Drawing.Size(684, 431);
-            this.Player.TabIndex = 4;
-            this.Player.Visible = false;
-            this.Player.ClickEvent += new AxWMPLib._WMPOCXEvents_ClickEventHandler(this.Player_ClickEvent);
+            this.btnTools.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTools.FlatAppearance.BorderSize = 0;
+            this.btnTools.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.btnTools.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
+            this.btnTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTools.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTools.ForeColor = System.Drawing.Color.Silver;
+            this.btnTools.Image = global::PlayerUI.Properties.Resources.Tools2;
+            this.btnTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTools.Location = new System.Drawing.Point(0, 427);
+            this.btnTools.Name = "btnTools";
+            this.btnTools.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnTools.Size = new System.Drawing.Size(233, 45);
+            this.btnTools.TabIndex = 6;
+            this.btnTools.Text = "  Tools";
+            this.btnTools.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTools.UseVisualStyleBackColor = true;
+            this.btnTools.Visible = false;
+            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
             // 
-            // pictureBox9
+            // btnEqualizer
             // 
-            this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(233, 67);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(220, 220);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 2;
-            this.pictureBox9.TabStop = false;
+            this.btnEqualizer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEqualizer.FlatAppearance.BorderSize = 0;
+            this.btnEqualizer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.btnEqualizer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
+            this.btnEqualizer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEqualizer.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEqualizer.ForeColor = System.Drawing.Color.Silver;
+            this.btnEqualizer.Image = global::PlayerUI.Properties.Resources.Equalizer2;
+            this.btnEqualizer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEqualizer.Location = new System.Drawing.Point(0, 382);
+            this.btnEqualizer.Name = "btnEqualizer";
+            this.btnEqualizer.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnEqualizer.Size = new System.Drawing.Size(233, 45);
+            this.btnEqualizer.TabIndex = 5;
+            this.btnEqualizer.Text = "  Equalizer";
+            this.btnEqualizer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEqualizer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEqualizer.UseVisualStyleBackColor = true;
+            this.btnEqualizer.Visible = false;
+            this.btnEqualizer.Click += new System.EventHandler(this.btnEqualizer_Click);
             // 
-            // pictureBox10
+            // btnPlaylist
             // 
-            this.pictureBox10.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(233, 268);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(220, 92);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 3;
-            this.pictureBox10.TabStop = false;
+            this.btnPlaylist.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPlaylist.FlatAppearance.BorderSize = 0;
+            this.btnPlaylist.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.btnPlaylist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
+            this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlaylist.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlaylist.ForeColor = System.Drawing.Color.Silver;
+            this.btnPlaylist.Image = global::PlayerUI.Properties.Resources.PlayList1;
+            this.btnPlaylist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPlaylist.Location = new System.Drawing.Point(0, 257);
+            this.btnPlaylist.Name = "btnPlaylist";
+            this.btnPlaylist.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnPlaylist.Size = new System.Drawing.Size(233, 45);
+            this.btnPlaylist.TabIndex = 3;
+            this.btnPlaylist.Text = "  Playlist management";
+            this.btnPlaylist.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPlaylist.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPlaylist.UseVisualStyleBackColor = true;
+            this.btnPlaylist.Click += new System.EventHandler(this.btnPlaylist_Click);
             // 
-            // timer1
+            // btnMedia
             // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.btnMedia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMedia.FlatAppearance.BorderSize = 0;
+            this.btnMedia.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.btnMedia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
+            this.btnMedia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMedia.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMedia.ForeColor = System.Drawing.Color.Silver;
+            this.btnMedia.Image = global::PlayerUI.Properties.Resources.Media2;
+            this.btnMedia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMedia.Location = new System.Drawing.Point(0, 92);
+            this.btnMedia.Name = "btnMedia";
+            this.btnMedia.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnMedia.Size = new System.Drawing.Size(233, 45);
+            this.btnMedia.TabIndex = 1;
+            this.btnMedia.Text = "  Media";
+            this.btnMedia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMedia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMedia.UseVisualStyleBackColor = true;
+            this.btnMedia.Click += new System.EventHandler(this.btnMedia_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(36, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(160, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // LblChange
+            // 
+            this.LblChange.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblChange.AutoSize = true;
+            this.LblChange.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblChange.ForeColor = System.Drawing.Color.LightGray;
+            this.LblChange.Location = new System.Drawing.Point(324, 103);
+            this.LblChange.Name = "LblChange";
+            this.LblChange.Size = new System.Drawing.Size(64, 18);
+            this.LblChange.TabIndex = 23;
+            this.LblChange.Text = "00:00:00";
+            this.LblChange.Visible = false;
             // 
             // Form1
             // 
@@ -818,22 +772,20 @@
             this.panelPlaylistSubMenu.ResumeLayout(false);
             this.panelMediaSubMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelPlayer.ResumeLayout(false);
             this.panelPlayer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnFullScreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBMedia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.panelChildForm.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBShuffle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnVolumen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBStop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBRepeat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBAdelante)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPlay)).EndInit();
-            this.panelChildForm.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -854,7 +806,6 @@
         private System.Windows.Forms.Button btnTools;
         private System.Windows.Forms.Button btnEqualizer;
         private System.Windows.Forms.Panel panelPlaylistSubMenu;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button BtnManagePL;
         private System.Windows.Forms.Button BtnNewPL;
         private System.Windows.Forms.Button btnPlaylist;
@@ -874,18 +825,14 @@
         private System.Windows.Forms.Label LblVolumen;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TrackBar PBMedia;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
         private AxWMPLib.AxWindowsMediaPlayer Player;
-        private System.Windows.Forms.PictureBox BtnFullScreen;
+        private System.Windows.Forms.PictureBox PBShuffle;
         private System.Windows.Forms.Button BtnPlay;
         private System.Windows.Forms.Label label1;
+        private XComponent.SliderBar.MACTrackBar MTBVolume;
+        private XComponent.SliderBar.MACTrackBar MTBPosition;
+        private System.Windows.Forms.Label LblChange;
     }
 }
 
