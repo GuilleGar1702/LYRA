@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 namespace PlayerUI
 {
 
@@ -33,12 +34,31 @@ namespace PlayerUI
         int TempVol = 0;
         public string ExternalURL { get; set; }
         string Ruta;
+        //public string RutaCapture = Path.Combine(Application.StartupPath, "Captures");
+
         public Form1()
         {
             InitializeComponent();
             hideSubMenu();
             this.KeyDown += new KeyEventHandler(Form1_KeyDown_1);
+            this.MouseMove += Form1_MouseMove;
         }
+
+
+        public void SidePanelHider()
+        {
+            var CursorPosition = this.PointToClient(Cursor.Position);
+            if (CursorPosition.X > 233)
+            {
+                panelSideMenu.Visible = false;
+            }
+            else
+            {
+                panelSideMenu.Visible = true;
+            }
+        }
+
+
 
         private void CleanPlaylist()
         {
@@ -169,6 +189,7 @@ namespace PlayerUI
             Player.Ctlcontrols.play();
             play = true;
             PBPlay.Image = Properties.Resources.Pause;
+            MTBPosition.Enabled = true;
             timer1.Start();
         }
 
@@ -257,14 +278,12 @@ namespace PlayerUI
         #region MediaSubMenu
         private void button2_Click(object sender, EventArgs e)
         {
+            
             CleanPlaylist();
             if (play == true)
             {
                 Pausar();
-                position = 0;
-                MTBPosition.Value = 0;
-                LblDuration.Text = "00:00:00";
-                LblPosition.Text = "00:00:00";
+                Reset();
             }
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -290,10 +309,7 @@ namespace PlayerUI
             if (play == true)
             {
                 Pausar();
-                position = 0;
-                MTBPosition.Value = 0;
-                LblDuration.Text = "00:00:00";
-                LblPosition.Text = "00:00:00";
+                Reset();
             }
 
             openChildForm(new Form2(this));
@@ -379,6 +395,7 @@ namespace PlayerUI
         #region ToolsSubMenu
         private void button13_Click(object sender, EventArgs e)
         {
+            openChildForm(new Form6(this));
             //..
             //your codes
             //..
@@ -451,6 +468,7 @@ namespace PlayerUI
         private void Form1_Load(object sender, EventArgs e)
         {
             Player.Ctlcontrols.stop();
+            panelSideMenu.Visible = false;
         }
 
 
@@ -513,12 +531,14 @@ namespace PlayerUI
                 MTBVolume.Value = 0;
                 Player.settings.mute = true;
                 LblVolumen.Text = MTBVolume.Value.ToString() + "%";
+                BtnVolumen.Image = Properties.Resources.SpeakerOff;
             }
             else
             {
                 MTBVolume.Value = TempVol;
                 LblVolumen.Text = MTBVolume.Value.ToString() + "%";
                 Player.settings.mute = false;
+                BtnVolumen.Image = Properties.Resources.Speaker;
             }
         }
 
@@ -627,6 +647,15 @@ namespace PlayerUI
         {
             LblVolumen.Text = (MTBVolume.Value).ToString() + "%";
             Player.settings.volume = MTBVolume.Value;
+            if (MTBVolume.Value != 0)
+            {
+                BtnVolumen.Image = Properties.Resources.Speaker;
+            }
+            else
+            {
+                BtnVolumen.Image = Properties.Resources.SpeakerOff;
+            }
+
         }
 
         private void MTBPosition_MouseDown(object sender, MouseEventArgs e)
@@ -690,14 +719,88 @@ namespace PlayerUI
 
         private void MTBPosition_Scroll_1(object sender, EventArgs e)
         {
-            /*if ((MTBPosition.Maximum / 60) > 60)
+        }
+
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            SidePanelHider();
+        }
+
+        private void panelChildForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            SidePanelHider();
+        }
+
+        private void Player_MouseMoveEvent(object sender, AxWMPLib._WMPOCXEvents_MouseMoveEvent e)
+        {
+            SidePanelHider();
+        }
+
+        private void panelPlayer_MouseMove(object sender, MouseEventArgs e)
+        {
+            var CursorPosition = this.PointToClient(Cursor.Position);
+            if (CursorPosition.X > 7)
             {
-                LblChange.Text = string.Format("{0:D2}:{1:D2}:{2:D2}", Hour, (Minute - (Hour * 60)), Second - 1);
+                panelSideMenu.Visible = false;
             }
             else
             {
-                LblChange.Text = string.Format("{0:D2}:{1:D2}", Minute, Second - 1);
-            }*/
+                panelSideMenu.Visible = true;
+            }
+        }
+
+        private void BtnCapture_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (System.IO.Path.GetExtension(Player.URL).Equals(".mp4", StringComparison.OrdinalIgnoreCase))
+                {
+                    Pausar();
+                    int videoWidth, videoHeight, videoX, videoY;
+                    double VideoRatioAspect = (double)Player.currentMedia.imageSourceWidth / Player.currentMedia.imageSourceHeight;
+                    double PlayerRatioAspect = (double)Player.Width / Player.Height;
+                    if (PlayerRatioAspect>VideoRatioAspect)//en caso de que el reproductor sea mas ancho
+                    {
+                        videoHeight = Player.Height;
+                        videoWidth = (int)(videoHeight*VideoRatioAspect);
+                        videoX = Player.PointToScreen(new System.Drawing.Point()).X + (Player.Width-videoWidth)/2;
+                        videoY = Player.PointToScreen(new System.Drawing.Point()).Y;
+                    }
+                    else//en caso de que el reproductor sea mas alto
+                    {
+                        videoWidth = Player.Width;
+                        videoHeight = (int)(videoWidth / VideoRatioAspect);
+                        videoX = Player.PointToScreen(new System.Drawing.Point()).X;
+                        videoY=Player.PointToScreen(new System.Drawing.Point()).Y + (Player.Height - videoHeight) /2;
+                    }
+
+                    //Bitmap bitmap = new Bitmap(Player.Width, Player.Height);
+                    Bitmap bitmap = new Bitmap(videoWidth, videoHeight);
+                    Graphics graphic = Graphics.FromImage(bitmap);
+                    //graphic.CopyFromScreen(Player.PointToScreen(new System.Drawing.Point()).X, Player.PointToScreen(new System.Drawing.Point()).Y, 0, 0, new System.Drawing.Size(Player.Width, Player.Height));
+                    graphic.CopyFromScreen(videoX, videoY, 0, 0, bitmap.Size);
+
+                    FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string FolderSelected = folderBrowserDialog.SelectedPath;
+                        string FullURL = Path.Combine(FolderSelected, "Capture.png");
+                        string name = "Capture";
+                        string ext = ".png";
+                        int x = 1;
+                        while (File.Exists(FullURL))
+                        {
+                            string tempFileName = string.Format("{0}({1})", name , x++);
+                            FullURL = Path.Combine(FolderSelected, tempFileName + ext);
+                        }
+                        bitmap.Save(FullURL, System.Drawing.Imaging.ImageFormat.Png);
+                    }
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("There has been a problem saving the capture. Error: "+ex);
+            }
         }
 
         private void MTBPosition_MouseUp(object sender, MouseEventArgs e)

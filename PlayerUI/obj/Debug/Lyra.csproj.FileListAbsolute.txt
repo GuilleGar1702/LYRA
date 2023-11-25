@@ -38,3 +38,8 @@ F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\Playe
 F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\obj\Debug\Lyra.csprojAssemblyReference.cache
 F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\obj\Debug\PlayerUI.Form5.resources
 F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\bin\Debug\MACTrackBarLib.dll
+F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\bin\Debug\Newtonsoft.Json.dll
+F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\bin\Debug\YoutubeExtractor.dll
+F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\bin\Debug\Newtonsoft.Json.xml
+F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\bin\Debug\YoutubeExtractor.xml
+F:\Users\Guillermo\Documents\Universidad\Programación\II\Lyra-Player\LYRA\PlayerUI\obj\Debug\PlayerUI.Form6.resources

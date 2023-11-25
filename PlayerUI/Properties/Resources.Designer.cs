@@ -83,6 +83,16 @@ namespace PlayerUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Capture {
+            get {
+                object obj = ResourceManager.GetObject("Capture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Equalizer {
             get {
                 object obj = ResourceManager.GetObject("Equalizer", resourceCulture);
@@ -256,6 +266,26 @@ namespace PlayerUI.Properties {
         internal static System.Drawing.Bitmap ShuffleOff {
             get {
                 object obj = ResourceManager.GetObject("ShuffleOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Speaker {
+            get {
+                object obj = ResourceManager.GetObject("Speaker", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SpeakerOff {
+            get {
+                object obj = ResourceManager.GetObject("SpeakerOff", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

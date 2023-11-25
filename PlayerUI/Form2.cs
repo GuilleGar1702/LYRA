@@ -111,5 +111,10 @@ namespace PlayerUI
                 SendMedia();
             }
         }
+
+        private void Form2_MouseMove(object sender, MouseEventArgs e)
+        {
+            Principal.SidePanelHider();
+        }
     }
 }

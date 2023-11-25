@@ -216,5 +216,10 @@ namespace PlayerUI
 
             }
         }
+
+        private void Form5_MouseMove(object sender, MouseEventArgs e)
+        {
+            Principal.SidePanelHider();
+        }
     }
 }
