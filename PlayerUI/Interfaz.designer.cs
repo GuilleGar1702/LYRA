@@ -34,6 +34,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.panelToolsSubMenu = new System.Windows.Forms.Panel();
+            this.BtnExtractor = new System.Windows.Forms.Button();
             this.BtnAudioConverter = new System.Windows.Forms.Button();
             this.BtnConverter = new System.Windows.Forms.Button();
             this.BtnDownloader = new System.Windows.Forms.Button();
@@ -72,7 +73,7 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.BtnExtractor = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelSideMenu.SuspendLayout();
             this.panelToolsSubMenu.SuspendLayout();
             this.panelPlaylistSubMenu.SuspendLayout();
@@ -170,6 +171,25 @@
             this.panelToolsSubMenu.Name = "panelToolsSubMenu";
             this.panelToolsSubMenu.Size = new System.Drawing.Size(233, 170);
             this.panelToolsSubMenu.TabIndex = 7;
+            // 
+            // BtnExtractor
+            // 
+            this.BtnExtractor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnExtractor.FlatAppearance.BorderSize = 0;
+            this.BtnExtractor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.BtnExtractor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.BtnExtractor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnExtractor.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExtractor.ForeColor = System.Drawing.Color.Silver;
+            this.BtnExtractor.Location = new System.Drawing.Point(0, 120);
+            this.BtnExtractor.Name = "BtnExtractor";
+            this.BtnExtractor.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.BtnExtractor.Size = new System.Drawing.Size(233, 40);
+            this.BtnExtractor.TabIndex = 3;
+            this.BtnExtractor.Text = "Extract audio";
+            this.BtnExtractor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnExtractor.UseVisualStyleBackColor = true;
+            this.BtnExtractor.Click += new System.EventHandler(this.BtnExtractor_Click);
             // 
             // BtnAudioConverter
             // 
@@ -444,6 +464,7 @@
             // 
             // panelLogo
             // 
+            this.panelLogo.Controls.Add(this.label2);
             this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -770,24 +791,16 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // BtnExtractor
+            // label2
             // 
-            this.BtnExtractor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnExtractor.FlatAppearance.BorderSize = 0;
-            this.BtnExtractor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.BtnExtractor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.BtnExtractor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnExtractor.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExtractor.ForeColor = System.Drawing.Color.Silver;
-            this.BtnExtractor.Location = new System.Drawing.Point(0, 120);
-            this.BtnExtractor.Name = "BtnExtractor";
-            this.BtnExtractor.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.BtnExtractor.Size = new System.Drawing.Size(233, 40);
-            this.BtnExtractor.TabIndex = 3;
-            this.BtnExtractor.Text = "Extract audio";
-            this.BtnExtractor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnExtractor.UseVisualStyleBackColor = true;
-            this.BtnExtractor.Click += new System.EventHandler(this.BtnExtractor_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Corbel", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(94, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "By Guillermo García";
             // 
             // Interfaz
             // 
@@ -813,6 +826,7 @@
             this.panelPlaylistSubMenu.ResumeLayout(false);
             this.panelMediaSubMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelPlayer.ResumeLayout(false);
             this.panelPlayer.PerformLayout();
@@ -877,6 +891,7 @@
         private System.Windows.Forms.Label LblChange;
         private System.Windows.Forms.PictureBox BtnCapture;
         private System.Windows.Forms.Button BtnExtractor;
+        private System.Windows.Forms.Label label2;
     }
 }
 
