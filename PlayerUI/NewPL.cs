@@ -20,7 +20,6 @@ namespace PlayerUI
             this.Principal = Principal;
         }
         string[] NewPlaylist = new string [0];
-        //public static string PlaylistsFolder = Path.Combine(Application.StartupPath, "LYRA-PlayLists");
         public static string PlaylistsFolder = Path.Combine(Application.StartupPath, "LYRA-PlayLists");
 
 

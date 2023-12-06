@@ -113,9 +113,7 @@ namespace PlayerUI
         {
 
             RefreshDGV();
-            //BtnOpen.Enabled = false;
             BtnOpen.Enabled = true;
-            //BtnDelete.Enabled = false;
             BtnDelete.Enabled = true;
             BtnBack.Enabled = false;
             BtnExport.Enabled = false;

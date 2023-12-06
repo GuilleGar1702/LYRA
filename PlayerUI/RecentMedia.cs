@@ -30,9 +30,7 @@ namespace PlayerUI
             Principal.ExternalInput = true;
             this.Close();
         }
-
-
-
+        
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -45,17 +43,13 @@ namespace PlayerUI
             Array.Copy(RecentMediaArray, TempElementsArray, RecentMediaArray.Length);
             TempElementsArray[RecentMediaArray.Length] = NewRecentMedia;
             RecentMediaArray = TempElementsArray;
-
-
-
+            
             //Set new URL in the array
             string[] TempURLsArray = new string[URLsArray.Length + 1];
             Array.Copy(URLsArray, TempURLsArray, URLsArray.Length);
             TempURLsArray[URLsArray.Length] = NewURL;
             URLsArray = TempURLsArray;
-
-
-
+            
             //Refresh the DataGripView
             DGVRecentMedia.Rows.Clear();
             foreach (var File in RecentMediaArray)
@@ -72,7 +66,6 @@ namespace PlayerUI
                 DGVRecentMedia.Rows[n].Cells[0].Value = System.IO.Path.GetFileName(File);
             }
         }
-
         private void DGVRecentMedia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
         }
@@ -87,7 +80,6 @@ namespace PlayerUI
             this.Close();
             Principal.CleanRecentMedia();
         }
-
         private void DGVRecentMedia_SelectionChanged(object sender, EventArgs e)
         {
             if (DGVRecentMedia.SelectedCells.Count > 0)

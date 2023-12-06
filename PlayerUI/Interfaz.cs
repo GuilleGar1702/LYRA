@@ -34,7 +34,6 @@ namespace PlayerUI
         int TempVol = 0;
         public string ExternalURL { get; set; }
         string Ruta;
-        //public string RutaCapture = Path.Combine(Application.StartupPath, "Captures");
 
         public Interfaz()
         {
@@ -188,9 +187,6 @@ namespace PlayerUI
             }
             
         }
-
-
-
         public void Pausar()
         {
             Player.Ctlcontrols.pause();
@@ -327,17 +323,11 @@ namespace PlayerUI
             }
 
             openChildForm(new Folder(this));
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
 
@@ -354,9 +344,6 @@ namespace PlayerUI
             }
 
             openChildForm(new RecentMedia(this));
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
         #endregion
@@ -410,53 +397,35 @@ namespace PlayerUI
         private void button13_Click(object sender, EventArgs e)
         {
             openChildForm(new VideoDL(this));
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             openChildForm(new VideoConverter(this));
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             openChildForm(new AudioConverter(this));
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
         #endregion
 
         private void btnEqualizer_Click(object sender, EventArgs e)
         {
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
             openChildForm(new Help());
-            //..
-            //your codes
-            //..
             hideSubMenu();
         }
         private void btnExit_Click(object sender, EventArgs e)
@@ -583,7 +552,6 @@ namespace PlayerUI
             {
                 Player.Visible = true;
                 MTBPosition.Maximum = (int)Player.currentMedia.duration;
-                //LblDuration.Text = Convert.ToString(Player.currentMedia.duration);
                 if (play == false)
                 {
                     Play();
@@ -680,7 +648,6 @@ namespace PlayerUI
         private void MTBPosition_MouseDown(object sender, MouseEventArgs e)
         {
             Pausar();
-            //LblChange.Visible = true;
         }
 
         private void PBRepeat_Click(object sender, EventArgs e)
@@ -794,10 +761,8 @@ namespace PlayerUI
                         videoY=Player.PointToScreen(new System.Drawing.Point()).Y + (Player.Height - videoHeight) /2;
                     }
 
-                    //Bitmap bitmap = new Bitmap(Player.Width, Player.Height);
                     Bitmap bitmap = new Bitmap(videoWidth, videoHeight);
                     Graphics graphic = Graphics.FromImage(bitmap);
-                    //graphic.CopyFromScreen(Player.PointToScreen(new System.Drawing.Point()).X, Player.PointToScreen(new System.Drawing.Point()).Y, 0, 0, new System.Drawing.Size(Player.Width, Player.Height));
                     graphic.CopyFromScreen(videoX, videoY, 0, 0, bitmap.Size);
 
                     FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
@@ -836,7 +801,6 @@ namespace PlayerUI
             timer1.Start();
             BtnPlay.Select();
             SetTimeStuff();
-            //LblChange.Visible = false;
         }
 
 
